@@ -18,17 +18,31 @@ public class Main {
 
                 boolean rised = false;
                 //Check if it has rised at some point
-                for (int j = 1; j < num.length ; j++ ){
+/*                for (int j = 1; j < num.length ; j++ ){
                     if (num[j] > num[j-1]) {
                         rised = true;
                         break;
                     }
-                }
+                }*/
 
                 int fallIndex = 0; // where it starts falling eg 100 or 109 also rising and fall 2
                 for (int j=1 ; j < num.length ; j++ ) {
-                    if (num[j] < num[j-1]) {
-                        fallIndex = j;
+
+                    if (!rised) {
+                        if (num[j] > num[j - 1]) {
+                            rised = true;
+                            // break;
+                        }
+                    }
+
+                    if (fallIndex == 0) {
+                        if (num[j] < num[j - 1]) {
+                            fallIndex = j;
+                           // break;
+                        }
+                    }
+
+                    if (rised && fallIndex!=0) {
                         break;
                     }
                 }
