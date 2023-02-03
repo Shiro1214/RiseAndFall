@@ -10,7 +10,7 @@ public class Main {
         // No rise No Fall
         // If rise then fall -> 2 parts only
         // If fall then rise -> keep falling
-        try (var s = new Scanner(new File("input.txt"));) {
+        try (var s = new Scanner(new File("input.txt"))) {
             int n = Integer.parseInt(s.nextLine());
 
             for (int i=0 ; i<n ; i++) {
@@ -33,7 +33,8 @@ public class Main {
                     }
                 }
 
-                //
+                //In case it never rised... keep it the same
+                //If it never falls... keep it the same
                 if (fallIndex != 0 && rised ){
                     for (int j=fallIndex+1 ; j<num.length; j++) {
                         num[j] = num[fallIndex];
