@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         //Output the same when
-        // Just rise
+        // only rise
         // Only fall
         // No rise No Fall
         // If rise then fall -> 2 parts only
@@ -15,10 +15,17 @@ public class Main {
 
             for (int i=0 ; i<n ; i++) {
                 var num = s.nextLine().toCharArray();
-                boolean equal = true;
-                boolean riseOnly = true;
-                boolean fallOnly = true;
-                int fallIndex = 0;
+
+                boolean rised = false;
+                //Check if it has rised at some point
+                for (int j = 1; j < num.length ; j++ ){
+                    if (num[j] > num[j-1]) {
+                        rised = true;
+                        break;
+                    }
+                }
+
+                int fallIndex = 0; // where it starts falling eg 100 or 109 also rising and fall 2
                 for (int j=1 ; j < num.length ; j++ ) {
                     if (num[j] < num[j-1]) {
                         fallIndex = j;
@@ -26,7 +33,8 @@ public class Main {
                     }
                 }
 
-                if (fallIndex != 0 ){
+                //
+                if (fallIndex != 0 && rised ){
                     for (int j=fallIndex+1 ; j<num.length; j++) {
                         num[j] = num[fallIndex];
                     }
